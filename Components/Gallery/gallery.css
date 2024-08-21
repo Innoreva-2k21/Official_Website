@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap');
+
+.cursive{
+  font-family: "Ballet", cursive;;
+}
+
+.dabba{
+  width: calc(100vw - 7vw);
+}
+
+.drag{
+  border:  solid white;
+  border-width: 0 0 2px 0px ;
+  border-radius: 0 0 50% 50%;
+  padding-bottom: 60px;
+}
+

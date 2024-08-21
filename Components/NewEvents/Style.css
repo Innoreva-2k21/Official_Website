@@ -1,0 +1,87 @@
+
+
+.newdiv{
+  display: flex;
+}
+
+.contents{
+  display: flex; 
+  justify-content: flex-start;
+  flex-wrap: wrap; 
+  height: min-content;
+  width: min-content;
+  margin-left: 1vw;
+  
+}
+.events{
+  -webkit-text-fill-color:transparent;
+  -webkit-text-stroke-width: 0.125rem;
+  /* color: rgba(255, 255, 255, 0.5); */
+  writing-mode: vertical-lr;
+  align-items: center;
+  font-size: 8rem;
+  line-height: 1;
+  letter-spacing: 0.1em;
+}
+
+
+.yearName-style{
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+  margin-bottom: 3.125rem;
+  
+}
+
+.calendar-grid {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center;
+  
+  
+}
+.calendar-grid:first-child{
+  order:1;
+}
+.calendar-grid > * {
+  flex: 1 0 25%; 
+}
+
+.calendar-month {
+  padding: 0.4375rem;
+  text-align: center;
+  width: fit-content;
+  
+}
+
+
+.calendar-month h2 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  /* background-color: rgb(0, 0, 0); */
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);  
+  justify-items: center;
+  width: 13.125rem;
+}
+.calendar-day {
+  padding: 0.1375rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #ffffff;
+}
+
+.markedDates {
+  background-color: #fffbfb7a;
+  color: rgb(255, 255, 255);
+  border-radius:60% ;
+  height:1.5625rem;
+  width: 1.5625rem;
+  
+}
