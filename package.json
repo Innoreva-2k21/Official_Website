@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "NODE_ENV=production next build",
+    "dev": "next",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "devp": "next dev -p 3333"
+    "prod": "next export"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
