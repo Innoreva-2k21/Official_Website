@@ -23,8 +23,6 @@ import Contact from "@/Components/Contact/Contact";
 
 import YearCalendar2 from "@/Components/NewEvents/YearCalendar";
 
-import { ToastContainer } from "react-toastify";
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-[#000016] overflow-hidden">
@@ -32,7 +30,10 @@ export default function Home() {
       <Hero />
 
       {/* About Us */}
-      <div id='About' className="flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16">
+      <div
+        id="About"
+        className="flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16"
+      >
         <Sidebar word="ABOUT   US" />
         <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 lg:p-10  w-full">
           <div className="mb-6 mt-12 text-[1.5rem] font-semibold text-white  lg:text-[2rem] text-left">
@@ -64,15 +65,18 @@ export default function Home() {
       </div>
 
       {/* Members */}
-      <div id='Members' className="flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16">
+      <div
+        id="Members"
+        className="flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16"
+      >
         <Sidebar word="Members" />
         <div className="flex flex-col w-full md:min-h-dvh px-10 md:px-0 items-start justify-center md:justify-start overflow-hidden">
           <div className=" w-full">
-            <div className="[font-family:'Archivo-Bold',Helvetica] mt-3 font-bold text-white text-[3.8vw] md:mt-4">
+            <div className="[font-family:'Archivo-Bold',Helvetica] mt-3 font-bold text-white text-xl md:text-4xl md:mt-4">
               HOLA AMIGOS !
             </div>
             <div className="flex w-full items-center justify-start">
-              <div className="[font-family:'Archivo-SemiBold',Helvetica]font-semibold text-white text-[2vw] w-fit text-nowrap mr-2 justify-self-start">
+              <div className="[font-family:'Archivo-SemiBold',Helvetica]font-semibold text-white text-lg md:text-3xl w-fit text-nowrap mr-2 justify-self-start">
                 POR HOLDERS
               </div>
             </div>
@@ -85,35 +89,50 @@ export default function Home() {
 
       {/* Projects */}
 
-      <div id='Projects' className="flex flex-col md:h-screen md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16 ">
+      <div
+        id="Projects"
+        className="flex flex-col md:h-screen md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16 "
+      >
         <Sidebar word="Projects" />
         <Mainbar />
       </div>
 
       {/* Achievements */}
-      <div id='Achievements' className=" flex flex-col md:flex-row min-h-screen items-center justify-start w-screen md:gap-16">
+      <div
+        id="Achievements"
+        className=" flex flex-col md:flex-row min-h-screen items-center justify-start w-screen md:gap-16"
+      >
         <Sidebar word="Achievements" />
         <Achievements />
       </div>
 
       {/* Events */}
-        <div id='Events' className=" flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16">
-          <Sidebar word="Events" />
-          <YearCalendar2 />
-        </div>
+      <div
+        id="Events"
+        className=" flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16"
+      >
+        <Sidebar word="Events" />
+        <YearCalendar2 />
+      </div>
       {/* <div className=" flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16">
         <Sidebar word="Events" />
         <YearCalendar />
       </div> */}
 
       {/* Alumni */}
-      <div id='Alumni' className="flex flex-col mt-4 md:mt-0 md:h-screen md:min-h-screen md:flex-row items-center justify-start w-screen ">
+      <div
+        id="Alumni"
+        className="flex flex-col mt-4 md:mt-0 md:h-screen md:min-h-screen md:flex-row items-center justify-start w-screen "
+      >
         <Sidebar word="Alumni" />
         <Alumni />
       </div>
 
       {/* Gallery */}
-      <div id='Gallery' className="flex flex-col md:flex-row min-h-screen items-center justify-start w-screen ">
+      <div
+        id="Gallery"
+        className="flex flex-col md:flex-row min-h-screen items-center justify-start w-screen "
+      >
         <div className="hidden md:block">
           <Sidebar word="Gallery" />
         </div>
@@ -124,7 +143,10 @@ export default function Home() {
       </div>
 
       {/* Contact Us */}
-      <div id='Contacts' className=" flex flex-col min-h-screen items-center justify-start w-screen">
+      <div
+        id="Contacts"
+        className=" flex flex-col min-h-screen items-center justify-start w-screen"
+      >
         {/* <div className="hidden md:block">
           <Sidebar word="Contact us" />
           </div>
@@ -135,7 +157,6 @@ export default function Home() {
         </div> */}
         <div className="md:flex-row min-h-screen items-center justify-start w-screen">
           <Contact />
-          <ToastContainer/>
         </div>
         <footer className=" w-full">
           <p className="font-light text-white  text-center pt-5 pb-2">
@@ -148,7 +169,6 @@ export default function Home() {
       {/* <div className=" flex min-h-screen">
         <Sidebar word="Sponsors" />
       </div> */}
-
     </main>
   );
 }
