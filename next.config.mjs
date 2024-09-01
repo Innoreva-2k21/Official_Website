@@ -29,9 +29,9 @@
 
 // export default nextConfig;
 
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
   images: {
     remotePatterns: [
       {
@@ -41,12 +41,15 @@ const nextConfig = {
     ],
   },
   compress: false, // Disable built-in compression
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+  webpack: (
+    config,
+    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
+  ) => {
     if (!dev) {
       // Disable minification and other optimizations in production
       config.optimization.minimize = false;
       config.optimization.splitChunks = {
-        chunks: 'async',
+        chunks: "async",
         minSize: 0,
         minChunks: 1,
         cacheGroups: {
@@ -56,7 +59,7 @@ const nextConfig = {
       };
       // Remove TerserPlugin to avoid JS minification
       config.optimization.minimizer = config.optimization.minimizer.filter(
-        (plugin) => plugin.constructor.name !== 'TerserPlugin'
+        (plugin) => plugin.constructor.name !== "TerserPlugin"
       );
     }
     // Important: return the modified config
