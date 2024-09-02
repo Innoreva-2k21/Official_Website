@@ -1,26 +1,24 @@
-'use client'
+"use client";
 import React, { useState, useEffect } from "react";
 import { toast, ToastContainer, css } from "react-toastify";
 import { client } from "@/Helper/context";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
-  const [countMessage, setCountMessage] = useState('0');
+  const [countMessage, setCountMessage] = useState("0");
   const [formData, setFormData] = useState({
-    _id: '0',
+    _id: "0",
     _type: "contact_us",
     name: "",
     email: "",
     message: "",
   });
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       toast.error("Please fill in all fields", {
-        style: { backgroundColor: 'red', color: 'white' }
+        style: { backgroundColor: "red", color: "white" },
       });
       return;
     }
@@ -28,19 +26,22 @@ const Contact = () => {
     setFormData({ ...formData, _id: String(Number(countMessage) + 1) });
     setCountMessage(String(Number(countMessage) + 1));
 
-    client.createOrReplace(formData).then((res) => {
-      console.log(`Contact message was created, document ID is ${res._id}`);
-      // Show success toast notification
-      toast.success("Form submitted successfully!", {
-        style: { backgroundColor: 'green', color: 'white' }
+    client
+      .createOrReplace(formData)
+      .then((res) => {
+        console.log(`Contact message was created, document ID is ${res._id}`);
+        // Show success toast notification
+        toast.success("Form submitted successfully!", {
+          style: { backgroundColor: "green", color: "white" },
+        });
+      })
+      .catch((error) => {
+        console.error("Error creating document:", error);
+        // Show error toast notification
+        toast.error("Form submission failed. Please try again.", {
+          style: { backgroundColor: "red", color: "white" },
+        });
       });
-    }).catch((error) => {
-      console.error("Error creating document:", error);
-      // Show error toast notification
-      toast.error("Form submission failed. Please try again.", {
-        style: { backgroundColor: 'red', color: 'white' }
-      });
-    });
 
     setFormData({
       _id: "contact_us",
@@ -100,7 +101,7 @@ const Contact = () => {
                   <span>
                     <img alt="Vector" src="/phone.svg" className="pr-4" />
                   </span>
-                  <div className="">0000000000</div>
+                  <div className="">+91 7482826996</div>
                 </a>
               </div>
             </div>
