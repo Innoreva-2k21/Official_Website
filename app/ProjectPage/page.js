@@ -65,7 +65,7 @@ export default function SearchBar() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center uppercase font-[Archivo] font-medium text-lg mt-4 mb-6 px-4"
+            className="text-center lowwercase font-[Archivo] font-small text-lg mt-4 mb-6 px-4"
           >
             {currentProject?.description}
           </motion.p>
