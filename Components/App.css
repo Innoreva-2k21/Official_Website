@@ -4,7 +4,9 @@ body {
 .newdiv {
   display: flex;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .contents {
   display: flex;
   justify-content: flex-start;
