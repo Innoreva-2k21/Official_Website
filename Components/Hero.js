@@ -7,6 +7,7 @@ function Hero() {
       className=" flex flex-col items-center justify-center h-auto w-screen pt-[35px] "
       style={{ backgroundColor: "#000016" }}
     >
+      <br className="md:block hidden"/><br className="md:block hidden"/><br className="md:block hidden"/>
       <Nav />
 
       <div className="mt-[4%]  top-0 left-0 [font-family:'Anek_Devanagari-Regular',Helvetica] font-normal text-white text-[20px] text-center tracking-[20.00px] leading-[normal]">
