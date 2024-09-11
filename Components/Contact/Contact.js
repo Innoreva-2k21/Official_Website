@@ -109,13 +109,13 @@ const Contact = () => {
               <form className="flex flex-col">
                 <label
                   htmlFor="name"
-                  className=" mb-2 md:mb-0 w-[8vw] h-[3vw] font-medium text-white text-[1.2rem] pb-6 md:mt-16"
+                  className=" mb-2 md:mb-0 w-full h-auto font-medium text-white text-[5vw] md:text-[1.2rem] pb-6 md:mt-16"
                 >
                   Name
                 </label>
                 <input
                   id="name"
-                  className="text-[1.6vw] md:w-[35vw] rounded-md h-[2.5rem] p-2.5 bg-[#9b9b9b]"
+                  className="text-[4vw] md:w-[35vw] rounded-md h-[3rem] p-2.5 bg-[#9b9b9b] text-black"
                   type="text"
                   value={formData.name}
                   onChange={(e) => {
@@ -126,13 +126,13 @@ const Contact = () => {
 
                 <label
                   htmlFor="email"
-                  className=" mt-[1.2vw] mb-2 md:mb-0 w-[8vw] h-[3vw] font-medium text-white md:text-[1.2rem] pb-6"
+                  className=" mt-[2vw] mb-2 md:mb-0 w-full h-auto font-medium text-white text-[5vw] md:text-[1.2rem] pb-6"
                 >
                   Email
                 </label>
                 <input
                   id="email"
-                  className="text-[1.6vw] md:w-[35vw] rounded-md h-[2.5rem] p-2.5 bg-[#9b9b9b]"
+                  className="text-[4vw] md:w-[35vw] rounded-md h-[3rem] p-2.5 bg-[#9b9b9b] text-black"
                   type="email"
                   value={formData.email}
                   onChange={(e) => {
@@ -143,13 +143,13 @@ const Contact = () => {
 
                 <label
                   htmlFor="message"
-                  className=" mt-[1.2vw] mb-2 md:mb-0 w-[8vw] h-[3vw] font-medium text-white md:text-[1.2rem] pb-6"
+                  className=" mt-[2vw] mb-2 md:mb-0 w-full h-auto font-medium text-white text-[5vw] md:text-[1.2rem] pb-6"
                 >
                   Message
                 </label>
                 <textarea
                   id="message"
-                  className="text-[1.6vw]  text md:w-[35vw] rounded-md h-[11vw] p-2.5 bg-[#9b9b9b]"
+                  className="text-[4vw] md:w-[35vw] rounded-md h-[12vw] p-2.5 bg-[#9b9b9b] text-black"
                   value={formData.message}
                   onChange={(e) => {
                     setFormData({ ...formData, message: e.target.value });
@@ -158,7 +158,7 @@ const Contact = () => {
                 />
                 <br />
                 <button
-                  className="w-28  font-medium text-white md:text-[1.2rem] px-3 py-1 hover:bg-[#9b9b9b] hover:cursor-pointer border border-white rounded-md"
+                  className="w-[30vw] md:w-28 font-medium text-white md:text-[1.2rem] px-3 py-1 hover:bg-[#9b9b9b] hover:cursor-pointer border border-white rounded-md"
                   type="submit"
                   onClick={handleSubmit}
                 >
@@ -168,17 +168,18 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <div className="hidden md:flex flex-col pl-6 justify-start gap-4 items-center">
+        {/* Desktop Version */}
+        <div className="hidden text-black md:flex flex-col pl-6 justify-start gap-4 items-center">
           <form className="flex flex-col">
             <label
               htmlFor="name"
-              className=" mb-2 md:mb-0 w-[8vw] h-[3vw] font-medium text-white text-[1.2rem] pb-6 md:mt-16"
+              className="mb-2 md:mb-0 w-full h-auto font-medium text-white text-[1.6vw] md:text-[1.2rem] pb-6 md:mt-16"
             >
               Name
             </label>
             <input
               id="name"
-              className="text-[1.6vw] md:w-[35vw] rounded-md h-[2.5rem] p-2.5 bg-[#9b9b9b]"
+              className="text-[1.2vw] md:w-[35vw] rounded-md h-[3rem] p-2.5 bg-[#9b9b9b] text-black"
               type="text"
               value={formData.name}
               onChange={(e) => {
@@ -189,13 +190,13 @@ const Contact = () => {
 
             <label
               htmlFor="email"
-              className=" mt-[1.2vw] mb-2 md:mb-0 w-[8vw] h-[3vw] font-medium text-white md:text-[1.2rem] pb-6"
+              className="mt-[2vw] mb-2 md:mb-0 w-full h-auto font-medium text-white text-[1.6vw] md:text-[1.2rem] pb-6"
             >
               Email
             </label>
             <input
               id="email"
-              className="text-[1.6vw] md:w-[35vw] rounded-md h-[2.5rem] p-2.5 bg-[#9b9b9b]"
+              className="text-[1.2vw] md:w-[35vw] rounded-md h-[3rem] p-2.5 bg-[#9b9b9b] text-black"
               type="email"
               value={formData.email}
               onChange={(e) => {
@@ -206,13 +207,13 @@ const Contact = () => {
 
             <label
               htmlFor="message"
-              className=" mt-[1.2vw] mb-2 md:mb-0 w-[8vw] h-[3vw] font-medium text-white md:text-[1.2rem] pb-6"
+              className="mt-[2vw] mb-2 md:mb-0 w-full h-auto font-medium text-white text-[1.6vw] md:text-[1.2rem] pb-6"
             >
               Message
             </label>
             <textarea
               id="message"
-              className="text-[1.6vw]  text md:w-[35vw] rounded-md h-[11vw] p-2.5 bg-[#9b9b9b]"
+              className="text-[1.2vw] md:w-[35vw] rounded-md h-[12vw] p-2.5 bg-[#9b9b9b] text-black"
               value={formData.message}
               onChange={(e) => {
                 setFormData({ ...formData, message: e.target.value });
@@ -221,7 +222,7 @@ const Contact = () => {
             />
             <br />
             <button
-              className="w-28  font-medium text-white md:text-[1.2rem] px-3 py-1 hover:bg-[#9b9b9b] hover:cursor-pointer border border-white rounded-md"
+              className="w-[30vw] md:w-28 font-medium text-white md:text-[1.2rem] px-3 py-1 hover:bg-[#9b9b9b] hover:cursor-pointer border border-white rounded-md"
               type="submit"
               onClick={handleSubmit}
             >
