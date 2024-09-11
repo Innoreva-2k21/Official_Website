@@ -7,48 +7,69 @@ import "react-toastify/dist/ReactToastify.css";
 const Contact = () => {
   const [countMessage, setCountMessage] = useState("0");
   const [formData, setFormData] = useState({
-    _id: "0",
-    _type: "contact_us",
-    name: "",
-    email: "",
-    message: "",
+    Name: "",
+    Email: "",
+    Message: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.Name || !formData.Email || !formData.Message) {
       toast.error("Please fill in all fields", {
         style: { backgroundColor: "red", color: "white" },
       });
       return;
     }
 
-    setFormData({ ...formData, _id: String(Number(countMessage) + 1) });
-    setCountMessage(String(Number(countMessage) + 1));
+    // setFormData({ ...formData, _id: String(Number(countMessage) + 1) });
+    // setCountMessage(String(Number(countMessage) + 1));
 
-    client
-      .createOrReplace(formData)
-      .then((res) => {
-        console.log(`Contact message was created, document ID is ${res._id}`);
-        // Show success toast notification
-        toast.success("Form submitted successfully!", {
-          style: { backgroundColor: "green", color: "white" },
-        });
-      })
-      .catch((error) => {
-        console.error("Error creating document:", error);
-        // Show error toast notification
-        toast.error("Form submission failed. Please try again.", {
-          style: { backgroundColor: "red", color: "white" },
-        });
+    // client
+    //   .createOrReplace(formData)
+    //   .then((res) => {
+    //     console.log(`Contact message was created, document ID is ${res._id}`);
+    //     // Show success toast notification
+    //     toast.success("Form submitted successfully!", {
+    //       style: { backgroundColor: "green", color: "white" },
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error creating document:", error);
+    //     // Show error toast notification
+    //     toast.error("Form submission failed. Please try again.", {
+    //       style: { backgroundColor: "red", color: "white" },
+    //     });
+    //   });
+
+    setFormData({ ...formData });
+
+    await  fetch('https://sheetdb.io/api/v1/nal6xe0uimm9u', {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          data: formData
+      }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      toast.success("Form submitted successfully!", {
+        style: { backgroundColor: "green", color: "white" },
       });
+    })
+    .catch((error) => {
+      toast.error("Form submission failed. Please try again.", {
+        style: { backgroundColor: "red", color: "white" },
+      });
+    })
 
     setFormData({
-      _id: "contact_us",
-      _type: "contact_us",
-      name: "",
-      email: "",
-      message: "",
+      Name: "",
+      Email: "",
+      Message: "",
     });
   };
 
@@ -117,9 +138,9 @@ const Contact = () => {
                   id="name"
                   className="text-[4vw] md:w-[35vw] rounded-md h-[3rem] p-2.5 bg-[#9b9b9b] text-black"
                   type="text"
-                  value={formData.name}
+                  value={formData.Name}
                   onChange={(e) => {
-                    setFormData({ ...formData, name: e.target.value });
+                    setFormData({ ...formData, Name: e.target.value });
                     console.log(formData);
                   }}
                 />
@@ -134,9 +155,9 @@ const Contact = () => {
                   id="email"
                   className="text-[4vw] md:w-[35vw] rounded-md h-[3rem] p-2.5 bg-[#9b9b9b] text-black"
                   type="email"
-                  value={formData.email}
+                  value={formData.Email}
                   onChange={(e) => {
-                    setFormData({ ...formData, email: e.target.value });
+                    setFormData({ ...formData, Email: e.target.value });
                     console.log(formData);
                   }}
                 />
@@ -149,10 +170,11 @@ const Contact = () => {
                 </label>
                 <textarea
                   id="message"
+                  
                   className="text-[4vw] md:w-[35vw] rounded-md h-[12vw] p-2.5 bg-[#9b9b9b] text-black"
                   value={formData.message}
                   onChange={(e) => {
-                    setFormData({ ...formData, message: e.target.value });
+                    setFormData({ ...formData, Message: e.target.value });
                     console.log(formData);
                   }}
                 />
@@ -181,9 +203,9 @@ const Contact = () => {
               id="name"
               className="text-[1.2vw] md:w-[35vw] rounded-md h-[3rem] p-2.5 bg-[#9b9b9b] text-black"
               type="text"
-              value={formData.name}
+              value={formData.Name}
               onChange={(e) => {
-                setFormData({ ...formData, name: e.target.value });
+                setFormData({ ...formData, Name: e.target.value });
                 console.log(formData);
               }}
             />
@@ -198,9 +220,9 @@ const Contact = () => {
               id="email"
               className="text-[1.2vw] md:w-[35vw] rounded-md h-[3rem] p-2.5 bg-[#9b9b9b] text-black"
               type="email"
-              value={formData.email}
+              value={formData.Email}
               onChange={(e) => {
-                setFormData({ ...formData, email: e.target.value });
+                setFormData({ ...formData, Email: e.target.value });
                 console.log(formData);
               }}
             />
@@ -214,9 +236,9 @@ const Contact = () => {
             <textarea
               id="message"
               className="text-[1.2vw] md:w-[35vw] rounded-md h-[12vw] p-2.5 bg-[#9b9b9b] text-black"
-              value={formData.message}
+              value={formData.Message}
               onChange={(e) => {
-                setFormData({ ...formData, message: e.target.value });
+                setFormData({ ...formData, Message: e.target.value });
                 console.log(formData);
               }}
             />
