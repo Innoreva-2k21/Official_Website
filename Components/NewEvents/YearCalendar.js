@@ -43,11 +43,18 @@ const YearCalendar2 = () => {
     return new Date(year, month, 1).getDay();
   };
   const handleLeft = () => {
-    setCurYear((curYear) - 1);
+    if (curYear > 2023) {
+      setCurYear(curYear - 1);
+    }
   };
+
   const handleRight = () => {
-    setCurYear((curYear) + 1);
+    const currentYear = new Date().getFullYear();
+    if (curYear < currentYear) {
+      setCurYear(curYear + 1);
+    }
   };
+
 
   // useEffect(() => {
   //   const dummy=EventsContext.filter((event) => {
