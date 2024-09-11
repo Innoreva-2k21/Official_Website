@@ -4,44 +4,96 @@ import { client } from "@/Helper/context";
 const Achievements = () => {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(6); // Default to large screen setup
+
+  // Function to calculate items per page based on screen width
+  const calculateItemsPerPage = () => {
+    if (window.innerWidth < 768) {
+      return 5; // Small screen
+    } else {
+      return 6; // Large screen
+    }
+  };
 
   useEffect(() => {
     client.fetch('*[_type == "achievements"]').then((res) => {
       const achievements = res;
       achievements.sort((a, b) => a.id - b.id);
-      // console.log(achievements);
       setData(achievements);
     });
+
+    // Set initial items per page based on screen size
+    setItemsPerPage(calculateItemsPerPage());
+
+    // Add event listener for resizing the window
+    const handleResize = () => {
+      setItemsPerPage(calculateItemsPerPage());
+      setPage(0); // Reset to first page when screen size changes
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
+
   const handleLeft = () => {
     if (page > 0) {
       setPage(page - 1);
     }
   };
+
   const handleRight = () => {
-    const maxPage = Math.ceil(data.length / 6) - 1;
+    let maxPage;
+    if (window.innerWidth < 768) {
+      // Special case for small screens
+      maxPage = Math.ceil(data.length / 5) - 1;
+    } else {
+      maxPage = Math.ceil(data.length / 6) - 1;
+    }
     if (page < maxPage) {
       setPage(page + 1);
     }
   };
 
+  const getSliceIndexes = () => {
+    if (window.innerWidth < 768) {
+      // Small screen logic
+      if (page === 0 || page === 1) {
+        return [page * 5, Math.min((page + 1) * 5, data.length)];
+      } else if (page === 2) {
+        return [10, data.length]; // Last page (1 item for 11th)
+      }
+    } else {
+      // Large screen logic
+      return [page * 6, Math.min((page + 1) * 6, data.length)];
+    }
+  };
+
+  const [startIndex, endIndex] = getSliceIndexes();
+
   return (
     <>
-      <div className="w-full  md:min-h-dvh flex flex-col px-6 text-white justify-start">
+      <div className="w-full md:min-h-dvh flex flex-col px-6 text-white justify-start">
         {data &&
           data
-            .slice(6 * page, Math.min(6 * page + 6, data.length))
-            .map((ele, index) => {
+            .slice(startIndex, endIndex)
+            .map((ele) => {
               return (
                 <React.Fragment key={ele.id}>
                   <div className="flex items-start justify-start gap-3">
-                    <div className=" text-8xl ">{ele.id}</div>
-                    <div className="pt-3">{ele.achievement}</div>
+                    <div className=" text-8xl">{ele.id}</div>
+                    <div className="pt-8 text-2xl justify-self-center items-center">
+                      {ele.achievement}
+                    </div>
                   </div>
                   <div className="w-full border md:border-[0.2px] my-3 rounded-md"></div>
                 </React.Fragment>
               );
             })}
+        {/* For large screens */}
         <div className="hidden md:flex w-full items-center justify-between mt-auto ">
           <div className="w-fit text-nowrap font-bold text-2xl text-white pl-2">
             We have some more
@@ -51,26 +103,23 @@ const Achievements = () => {
             <img src="/Left.svg" alt="" className="w-24" onClick={handleLeft} />
           </button>
           <button className="">
-            <img
-              src="/Right.svg"
-              alt=""
-              className="w-24"
-              onClick={handleRight}
-            />
+            <img src="/Right.svg" alt="" className="w-24" onClick={handleRight} />
           </button>
         </div>
-      </div>
-      <div className="md:hidden w-full flex items-center justify-between mt-auto mb-6 px-2">
-        <div className="w-fit text-nowrap font-bold text-white pl-2">
-          We have some more
+
+        {/* For small screens */}
+        <div className="md:hidden w-full flex items-center justify-between mt-auto mb-6 px-2">
+          <div className="w-fit text-nowrap font-bold text-white pl-2">
+            We have some more
+          </div>
+          <div className="w-full border rounded-md mx-4"></div>
+          <button className="">
+            <img src="/Left.svg" alt="" className="w-24" onClick={handleLeft} />
+          </button>
+          <button className="">
+            <img src="/Right.svg" alt="" className="w-24" onClick={handleRight} />
+          </button>
         </div>
-        <div className="w-full border rounded-md mx-4"></div>
-        <button className="">
-          <img src="/Left.svg" alt="" className="w-24" onClick={handleLeft} />
-        </button>
-        <button className="">
-          <img src="/Right.svg" alt="" className="w-24" onClick={handleRight} />
-        </button>
       </div>
     </>
   );

@@ -21,6 +21,11 @@ const Item = () => {
             TEAM INNOREVA
           </h5>
         </div>
+        {/* for large screen */}
+        <div className="absolute hidden md:block top-[8vw] lg:left-[15vw] left-16">
+          <img src="/Innoreva Logo file.png" alt="innoreva logo" width="200px" height="200px"></img>
+        </div>
+       
         <div className="absolute hidden md:block top-[28vw] lg:left-[10vw] left-12">
           <h5 className="xl:text-6xl sm:text-5xl text-4xl mb-1 cursive">Candids</h5>
           <div className="h-40 w-44">
@@ -69,7 +74,11 @@ const Item = () => {
           <div className="h-40 w-44">
             <CandidCard />
           </div>
-          <div className="flex flex-col items-end -mt-16 ml-44">
+          
+       
+          <div className="flex flex-col items-end -mt-16 ml-44 justify-center">
+             {/* for small screen */}
+          <img className="absolute top-[20vw] bottom-25 md:hidden" src="/Innoreva Logo file.png" alt="innoreva logo" width="130px" height="130px"></img>
             <h5 className="xl:text-6xl sm:text-5xl text-4xl cursive">Moments</h5>
             <h5 className="mr-4">TO BE RELIVED</h5>
           </div>
