@@ -79,7 +79,7 @@ const Contact = () => {
   };
   return (
     <>
-      <div className="text-white w-full h-screen flex flex-col md:flex-row justify-start items-center ">
+      <div className="text-white w-full h-fit md:h-screen flex flex-col md:flex-row justify-start items-center ">
         <div className="flex flex-col h-full justify-between items-center md:items-start md:w-1/2 w-full  md:pl-14">
           <div className="mx-8">
             <div className="text-6xl capitalize text-nowrap font-bold mt-16">

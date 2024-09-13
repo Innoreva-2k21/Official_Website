@@ -33,28 +33,28 @@ export default function SearchBar() {
 
   return (
     <div style={{ backgroundColor: "#000016",color:"white" }}
- className="flex flex-col items-center justify-center min-h-screen p-4">
+ className="flex flex-col items-center justify-center min-h-screen">
       {currentProject ? (
         <>
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center uppercase font-[Archivo] font-bold text-2xl mb-4"
+            className="text-center uppercase font-[Archivo] mt-4 font-bold text-2xl"
           >
             {currentProject?.title}
           </motion.div>
-
+            <div className='flex flex-col md:flex-row mt-6 w-[85%] justify-center items-center'>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="relative overflow-hidden mb-4"
+            className="mb-4 flex md:w-1/3 "
           >
             <motion.img
               src={urlFor(currentProject?.image)?.width(800).url() || '/default-image.jpg'}
               alt={currentProject?.title}
-              className="object-center object-cover w-80 h-80 mx-auto"
+              className="object-center object-cover w-full h-fit mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
@@ -65,10 +65,11 @@ export default function SearchBar() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center lowwercase font-[Archivo] font-small text-lg mt-4 mb-6 px-4"
+            className="text-justify font-light lowwercase text-lg mt-4 mb-6 px-4 md:w-2/3"
           >
             {currentProject?.description}
           </motion.p>
+          </div>
         </>
       ) : (
         <div className="text-center">Project not found</div>

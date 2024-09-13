@@ -32,11 +32,11 @@ export default function Home() {
       {/* About Us */}
       <div
         id="About"
-        className="flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16"
+        className="flex flex-col md:flex-row items-center justify-start w-screen md:gap-16"
       >
         <Sidebar word="ABOUT   US" />
         <div className="flex flex-col justify-between p-4 sm:p-6 md:p-8 lg:p-10  w-full">
-          <div className="mb-6 mt-12 text-[1.5rem] font-semibold text-white  lg:text-[2rem] text-left">
+          <div className="mb-6 mt-12 text-[1.5rem] font-semibold text-slate-400  lg:text-[2rem] text-left">
             WHO ARE WE?
           </div>
 
@@ -45,7 +45,7 @@ export default function Home() {
             emphasis on providing innovative and cutting-edge solutions to
             challenges faced by the real world.
           </div>
-          <div className="mb-6 text-[1.5rem] font-semibold text-white  lg:text-[2rem] text-left">
+          <div className="mb-6 text-[1.5rem] font-semibold text-slate-400   lg:text-[2rem] text-left">
             WHAT’S OUR PURPOSE?
           </div>
           <div className="mb-6 text-[1.25rem] text-white lg:text-[1.5rem] text-justify">
@@ -53,7 +53,7 @@ export default function Home() {
             developing groundbreaking solutions. We integrate various domains of
             technology and push the boundaries of technological advancements.
           </div>
-          <div className="mb-6 text-[1.5rem] font-semibold text-white lg:text-[2rem] text-left">
+          <div className="mb-6 text-[1.5rem] font-semibold text-slate-400  lg:text-[2rem] text-left">
             WHAT ARE OUR MAIN DOMAINS?
           </div>
           <div className="text-[1.25rem] md:mb-12 text-white  lg:text-[1.5rem] text-justify">
@@ -67,10 +67,10 @@ export default function Home() {
       {/* Members */}
       <div
         id="Members"
-        className="flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16"
+        className="flex flex-col md:flex-row md:mt-16 items-center justify-start w-screen md:gap-16"
       >
         <Sidebar word="Members" />
-        <div className="flex flex-col w-full md:min-h-dvh px-10 md:px-0 items-start justify-center md:justify-start overflow-hidden">
+        <div className="flex flex-col w-full px-10 md:px-0 items-start justify-center md:justify-start overflow-hidden">
           <div className=" w-full">
             <div className="[font-family:'Archivo-Bold',Helvetica] mt-3 font-bold text-white text-xl md:text-4xl md:mt-4">
               HOLA AMIGOS !
@@ -91,7 +91,7 @@ export default function Home() {
 
       <div
         id="Projects"
-        className="flex flex-col md:h-screen md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16 "
+        className="flex  flex-col md:mt-24 md:h-screen md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16 "
       >
         <Sidebar word="Projects" />
         <Mainbar />
@@ -100,7 +100,7 @@ export default function Home() {
       {/* Achievements */}
       <div
         id="Achievements"
-        className=" flex flex-col md:flex-row min-h-screen items-center justify-start w-screen md:gap-16"
+        className=" flex flex-col md:flex-row md:mt-24 items-center justify-start w-screen md:gap-16"
       >
         <Sidebar word="Achievements" />
         <Achievements />
@@ -109,7 +109,7 @@ export default function Home() {
       {/* Events */}
       <div
         id="Events"
-        className=" flex flex-col md:flex-row md:min-h-screen items-center justify-start w-screen md:gap-16"
+        className=" flex flex-col md:flex-row md:mt-24 items-center justify-start w-screen md:gap-16"
       >
         <Sidebar word="Events" />
         <YearCalendar2 />
@@ -122,7 +122,7 @@ export default function Home() {
       {/* Alumni */}
       <div
         id="Alumni"
-        className="flex flex-col mt-4 md:mt-0 md:h-screen md:min-h-screen md:flex-row items-center justify-start w-screen "
+        className="flex flex-col mt-4  md:mt-12 md:min-h-screen md:flex-row items-center justify-start w-screen "
       >
         <Sidebar word="Alumni" />
         <Alumni />

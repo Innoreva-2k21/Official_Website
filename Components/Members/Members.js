@@ -31,7 +31,7 @@ const Members = () => {
   return (
     <>
       <div className="w-full h-full flex justify-center lg:justify-center md:justify-start items-center mt-8">
-        <Carousel className="w-[70%]">
+        <Carousel className="w-[90%] md:w-[70%] ">
           <CarouselContent className="w-full">
             {membersData &&
               membersData.map((data) => (
@@ -40,24 +40,24 @@ const Members = () => {
                   className="md:basis-1/2 lg:basis-1/3 w-full h-full"
                 >
                   <div className="w-full md:scale-[0.85] lg:scale-100">
-                    <Card className="w-full bg-[#000016] h-full md:h-[60vh] lg:h-[70vh]">
+                    <Card className="w-full bg-[#000016] h-[fit-content]">
                       <CardContent className="flex flex-col gap-2 md:4 aspect-[1/1.3] w-full items-center justify-start text-white">
-                        <div className="w-full md:w-[80%] lg:w-[70%] aspect-square rounded-full overflow-hidden scale-100 mt-7 mb-7 border">
+                        <div className="w-full md:w-[80%] lg:w-[70%] aspect-square rounded-full overflow-hidden scale-100 mt-7 mb-5 border">
                           <img
                             src={urlFor(data.image).width(400).url()}
                             alt={data.name}
                             className="object-cover w-full h-full"
                           />
                         </div>
-                        <div className="font-semibold text-center text-base md:text-lg lg:text-xl text-slate-400">
+                        <div className="font-semibold h-7 md:h-7 text-center  text-xl md:text-lg lg:text-xl text-slate-400 overflow-hidden">
                           {data.name}
                         </div>
-                        <div className="w-full text-center mt-1 text-sm md:text-md lg:text-lg mb-4">
+                        <div className="w-full h-2 text-center text-md md:text-md lg:text-lg mb-4">
                           {data.por}
                         </div>
                         <a
                           href={data.linkedin}
-                          className="absolute bottom-1 md:bottom-8 border p-2 rounded-lg no-underline hover:scale-[1.2] mt-auto text-sm md:text-md lg:text-lg"
+                          className="border p-2 rounded-lg no-underline hover:bg-[#313030] mt-auto text-sm md:text-md lg:text-lg"
                         >
                           <div className="">Know More</div>
                         </a>

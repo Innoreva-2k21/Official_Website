@@ -6,6 +6,7 @@ import { builder } from "@/Helper/context";
 const Mainbar = () => {
   const [project, setProject] = useState([]);
   const [page, setPage] = useState(0);
+  const [showFullDescription, setShowFullDescription] = useState(false); // New state to track description toggle
 
   function urlFor(source) {
     return builder.image(source);
@@ -18,6 +19,7 @@ const Mainbar = () => {
       const handleLeftClick = () => {
         if (page > 0) {
           setPage(page - 1);
+          setShowFullDescription(false); // Reset description toggle on page change
         }
       };
 
@@ -43,6 +45,7 @@ const Mainbar = () => {
       const handleRightClick = () => {
         if (page < project.length - 1) {
           setPage(page + 1);
+          setShowFullDescription(false); // Reset description toggle on page change
         }
       };
 
@@ -55,44 +58,40 @@ const Mainbar = () => {
   }, [page, project]);
 
   return (
-    <div className="md:min-h-dvh md:h-screen w-full flex flex-col items-center justify-start text-white gap-2">
+    <div className="w-full flex flex-col items-center justify-start text-white gap-2">
       {project.length !== 0 && (
         <>
-          <div className="w-full h-fit text-center uppercase font-[Archivo] font-bold text-2xl mt-4">
+          <div className="w-[94%] text-center uppercase font-[Archivo] font-bold text-2xl mt-4">
             {project[page].title}
           </div>
-          <div className="w-3/5 h-4/5 relative overflow-hidden mt-3">
-            <div
-              className="relative top-0 w-full h-full flex border-[2px] border-white"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <img
-                src={urlFor(project[page].image).width(800).url()}
-                alt={project[page].title}
-                className="h-full w-full object-center object-cover"
-              />
-              <div className="h-full w-[20%] absolute right-0 bg-gradient-to-l from-black to-transparent"></div>
+          <div className="w-[90%] md:w-[43%] mt-3 border-[1px] border-gray-500 rounded-lg">
+            <div className="w-full h-auto flex flex-col p-2">
+              <div className="">
+                <img
+                  src={urlFor(project[page].image).width(800).url()}
+                  alt={project[page].title}
+                  className="h-full w-full object-center object-cover rounded-lg border-gray-400"
+                />
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <div
+                  className={`${
+                    showFullDescription ? "line-clamp-none" : "line-clamp-4"
+                  } overflow-hidden mt-2 px-2`}
+                >
+                  {project[page].description}
+                </div>
+               
+                <a
+                  className="w-[40%] md:w-[30%] text-white px-4 py-2 rounded-xl text-center border hover:bg-[#8080808d] mt-2 block"
+                  href={`ProjectPage?id=${project[page].id}`}
+                >
+                  Know More
+                </a>
+              </div>
             </div>
-            <div className="absolute top-[50%] right-[2%] animate-bounceLeftToRight">
-              {/* Read More Button */}
-              <a
-                className="bg-blue-500 text-white px-4 py-2 rounded-md"
-                href={`/ProjectPage?id=${project[page].id}`}
-              >
-                Read More
-              </a>
-            </div>
-            {/* Optional: description div for hover effect */}
-            {/* <div
-              className={`absolute top-0 right-0 md:px-12 px-4 sm:py-4 md:flex md:items-center text-justify md:overflow-hidden overflow-scroll bg-[#000000d1] text-sm w-full h-full transition-transform duration-500 ease-in-out ${
-                isHovered ? "transform translate-x-0" : "transform translate-x-full"
-              }`}
-            >
-              {project[page].description}
-            </div> */}
           </div>
-          <div className="w-full flex items-center justify-between rounded-xl mt-auto mb-8">
+          <div className="w-full flex items-center justify-between rounded-xl mt-4">
             <div className="text-4xl font-bold justify-items-start ml-5">
               {page + 1}/{project.length}
             </div>

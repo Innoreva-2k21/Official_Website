@@ -1,7 +1,9 @@
 // pages/projects/[id].js
-"use client"
-import { client } from '@/Helper/context';
-import { builder } from '@/Helper/context';
+"use client";
+import { client } from "@/Helper/context";
+import { builder } from "@/Helper/context";
+import React from "react";
+import styles from "@/styles/ProjectPage.module.css"; // Import custom styles
 
 const ProjectPage = ({ projects, id }) => {
   // Find the project that matches the given ID
@@ -11,19 +13,29 @@ const ProjectPage = ({ projects, id }) => {
     return <p>Project not found</p>;
   }
 
+  // Example dynamic styling based on project attributes
+  const backgroundStyle = {
+    backgroundColor: project.bgColor || "#fff", // default background
+  };
+
+  const textStyle = {
+    color: project.textColor || "#000", // default text color
+  };
+
   return (
-    <div>
-      {/* <h1>{project.title}</h1>
-      <img
-        src={builder.image(project.image).width(800).url()}
-        alt={project.title}
-      />
-      <p>{project.description}</p> */}
-      hllo
+    <div style={backgroundStyle} className={styles.projectContainer}>
+      <h1 style={textStyle} className={styles.projectTitle}>
+        {project.name}
+      </h1>
+      <p style={textStyle} className={styles.projectDescription}>
+        {project.description}
+      </p>
+      {/* Add any other project-specific content */}
     </div>
   );
 };
 
+// Server-side fetching of projects
 export async function getServerSideProps(context) {
   const { id } = context.params;
 
