@@ -20,23 +20,32 @@ export default function Nav() {
   useEffect(() => {
     if (!isMobile) {
       let lastScrollTop = 0;
-      window.addEventListener('scroll', () => {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (scrollTop > lastScrollTop) {
-          // Scrolling down
-          containerRef.current.style.top = '-100px';
-          console.log('Scrolling down');
-        } else {
-          // Scrolling up
-          containerRef.current.style.top = '20px';
-          console.log('Scrolling up');
+  
+      const handleScroll = () => {
+        if (containerRef.current) {  // Check if the ref exists
+          let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+          if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            containerRef.current.style.top = '-100px';
+            console.log('Scrolling down');
+          } else {
+            // Scrolling up
+            containerRef.current.style.top = '20px';
+            console.log('Scrolling up');
+          }
+  
+          lastScrollTop = scrollTop;
         }
-
-        lastScrollTop = scrollTop;
-      });
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
     }
-  }, []);
+  }, [isMobile]);
   return (
     <>
       <div className="md:hidden" style={{ width: "75%" }}>
