@@ -2,16 +2,22 @@
 import React, { useEffect, useState } from "react";
 import { client } from "@/Helper/context";
 import { builder } from "@/Helper/context";
+import { useRouter } from "next/navigation";
+
 
 const Mainbar = () => {
   const [project, setProject] = useState([]);
   const [page, setPage] = useState(0);
+  const router = useRouter();
+
   const [showFullDescription, setShowFullDescription] = useState(false); // New state to track description toggle
 
   function urlFor(source) {
     return builder.image(source);
   }
-
+  const handleNav =()=>{
+      router.push(`ProjectPage?id=${project[page].id}`);
+  }
   useEffect(() => {
     if (project.length !== 0) {
       const left = document.querySelector("#leftClick");
@@ -82,12 +88,12 @@ const Mainbar = () => {
                   {project[page].description}
                 </div>
                
-                <a
+                <div onClick={handleNav}
                   className="w-[40%] md:w-[30%] text-white px-4 py-2 rounded-xl text-center border hover:bg-[#8080808d] mt-2 block"
-                  href={`ProjectPage?id=${project[page].id}`}
+                  
                 >
                   Know More
-                </a>
+                </div>
               </div>
             </div>
           </div>
