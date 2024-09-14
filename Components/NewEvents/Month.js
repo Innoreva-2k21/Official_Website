@@ -63,7 +63,10 @@ export default function Month({
                     }`}
                     key={day + 1}
                   >
+                    <span onClick={goToEvent}>
                     {day + 1}
+                    </span>
+                    
                   </div>
                 ))}
               </div>
