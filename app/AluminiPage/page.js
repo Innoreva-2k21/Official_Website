@@ -22,23 +22,29 @@ const Alumni = () => {
     });
   }, []);
 
+  // Extract batch year from testimonial text (assuming format 'Batch: <year>')
   function getBatchYears(testimonial) {
     const match = testimonial.match(/Batch:\s*([\d-]+)/);
     return match ? match[1] : "N/A";
   }
 
+  // Function to return image URL
   function urlFor(source) {
     return builder.image(source);
   }
 
+  // Get unique batch years from data
   const batchYears = [...new Set(membersData.map((member) => member.batchYears))];
 
+  // Filter members data based on selected batch year
   const filteredMembersData = selectedBatchYear === "All"
     ? membersData
-    : membersData.filter(member => member.batchYears === selectedBatchYear);
+    : membersData.filter((member) => member.batchYears === selectedBatchYear);
 
   return (
     <div className="bg-[#000016] text-white min-h-screen flex flex-col items-center p-4">
+      <h1 className="text-3xl font-bold text-center text-white mb-6">Alumni Section</h1>
+
       <div className="flex justify-center mb-4 w-full">
         <select
           className="bg-gray-800 text-white p-2 rounded border border-gray-600 hover:border-gray-400 transition"
@@ -51,12 +57,17 @@ const Alumni = () => {
           ))}
         </select>
       </div>
+
+      {/* Alumni Cards Grid */}
       <div className="flex-grow overflow-y-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredMembersData.map((data) => (
-            <Card key={data.id} className="bg-[#1a1a2e] border border-gray-700 shadow-lg transition-transform transform hover:scale-105 w-80">
-              <CardContent className="flex flex-col items-center p-4">
-                <div className="font-semibold text-lg text-center mt-4">
+            <Card
+              key={data.id}
+              className="bg-[#000016] max-h-[75vh] w-80 flex flex-col justify-between mx-2" // No border color, same style as before
+            >
+              <CardContent className="flex flex-col w-full items-center justify-start text-white p-4">
+                <div className="font-semibold text-lg md:text-xl text-center mt-2">
                   {data.name}
                 </div>
                 <div className="w-24 h-24 rounded-full overflow-hidden m-2 border">
@@ -66,15 +77,15 @@ const Alumni = () => {
                     className="object-cover w-full h-full"
                   />
                 </div>
-                <div className="font-semibold text-center text-md text-slate-400">
+                <div className="font-semibold text-center text-md md:text-xl text-slate-400">
                   {data.occupation}
                 </div>
-                <div className="w-full text-center text-sm px-2">
+                <div className="w-full text-center text-sm md:text-lg px-2 overflow-y-auto max-h-32">
                   "{data.testimonial}"
                 </div>
                 <a
                   href={data.linkedin}
-                  className="mt-4 bg-blue-600 text-white p-2 rounded-lg transition hover:bg-blue-700"
+                  className="mt-4 border p-2 rounded-lg no-underline hover:bg-[#8080808d] transition-all text-sm md:text-md"
                 >
                   Know More
                 </a>

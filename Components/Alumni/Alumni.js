@@ -73,8 +73,8 @@ const Alumni = () => {
 
       <button
         onClick={handleRoute}
-        className="mt-6 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-      >
+        className="mt-4 border p-2 rounded-lg no-underline hover:bg-[#8080808d] transition-all text-sm md:text-md"
+        >
         Explore More
       </button>
     </div>
