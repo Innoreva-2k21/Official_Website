@@ -4,6 +4,8 @@ import { builder } from "@/Helper/context";
 import { Card, CardContent } from "@/Components/ui/card";
 import { useEffect, useState } from "react";
 
+
+
 const Alumni = () => {
   const [membersData, setMembersData] = useState([]);
   const [selectedBatchYear, setSelectedBatchYear] = useState("All");
@@ -54,32 +56,32 @@ const Alumni = () => {
       <div className="flex-grow overflow-y-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredMembersData.map((data) => (
-            <Card key={data.id} className="bg-[#1a1a2e] border border-gray-700 shadow-lg transition-transform transform hover:scale-105 w-80">
-              <CardContent className="flex flex-col items-center p-4">
-                <div className="font-semibold text-lg text-center mt-4">
-                  {data.name}
-                </div>
-                <div className="w-24 h-24 rounded-full overflow-hidden m-2 border">
-                  <img
-                    src={urlFor(data.image).width(350).height(350).url()}
-                    alt={data.name}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div className="font-semibold text-center text-md text-slate-400">
-                  {data.occupation}
-                </div>
-                <div className="w-full text-center text-sm px-2">
-                  "{data.testimonial}"
-                </div>
-                <a
-                  href={data.linkedin}
-                  className="mt-4 bg-blue-600 text-white p-2 rounded-lg transition hover:bg-blue-700"
-                >
-                  Know More
-                </a>
-              </CardContent>
-            </Card>
+            <Card className="bg-[#000016] max-h-[75vh] w-80 flex flex-col justify-between mx-2">
+                <CardContent className="flex flex-col w-full items-center justify-start text-white p-4">
+                  <div className="font-semibold text-lg md:text-xl text-center mt-2">
+                    {data.name}
+                  </div>
+                  <div className="w-24 h-24 rounded-full overflow-hidden m-2 border">
+                    <img
+                      src={urlFor(data.image).width(350).height(350).url()}
+                      alt={data.name}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                  <div className="font-semibold text-center text-md md:text-xl text-slate-400">
+                    {data.occupation}
+                  </div>
+                  <div className="w-full text-center text-sm md:text-lg px-2 overflow-y-auto max-h-32">
+                    "{data.testimonial}"
+                  </div>
+                  <a
+                    href={data.linkedin}
+                    className="mt-4 border p-2 rounded-lg no-underline hover:bg-[#8080808d] transition-all text-sm md:text-md"
+                  >
+                    Know More
+                  </a>
+                </CardContent>
+              </Card>
           ))}
         </div>
       </div>
