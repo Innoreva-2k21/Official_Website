@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next export"
+<<<<<<< HEAD
   },
+=======
+ },
+>>>>>>> 67c66a743bfeb55f7c1f4d9e8a522beee2f78881
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
     "@sanity/client": "^6.21.3",

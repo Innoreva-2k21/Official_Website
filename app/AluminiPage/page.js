@@ -24,23 +24,29 @@ const Alumni = () => {
     });
   }, []);
 
+  // Extract batch year from testimonial text (assuming format 'Batch: <year>')
   function getBatchYears(testimonial) {
     const match = testimonial.match(/Batch:\s*([\d-]+)/);
     return match ? match[1] : "N/A";
   }
 
+  // Function to return image URL
   function urlFor(source) {
     return builder.image(source);
   }
 
+  // Get unique batch years from data
   const batchYears = [...new Set(membersData.map((member) => member.batchYears))];
 
+  // Filter members data based on selected batch year
   const filteredMembersData = selectedBatchYear === "All"
     ? membersData
-    : membersData.filter(member => member.batchYears === selectedBatchYear);
+    : membersData.filter((member) => member.batchYears === selectedBatchYear);
 
   return (
     <div className="bg-[#000016] text-white min-h-screen flex flex-col items-center p-4">
+      <h1 className="text-3xl font-bold text-center text-white mb-6">Alumni Section</h1>
+
       <div className="flex justify-center mb-4 w-full">
         <select
           className="bg-gray-800 text-white p-2 rounded border border-gray-600 hover:border-gray-400 transition"
@@ -53,6 +59,8 @@ const Alumni = () => {
           ))}
         </select>
       </div>
+
+      {/* Alumni Cards Grid */}
       <div className="flex-grow overflow-y-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredMembersData.map((data) => (
